@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- vim: set sw=2 sts=2 -->
+<html>
+<head>
+  <title>nvirc</title>
+  <link type="text/css" rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <menu type="toolbar" id="application-menu">
+    <li>
+      <button>&#xf0e6;</button>
+      <menu type="list">
+        <button onclick="new()">Connect to server...</button>
+        <button onclick="save()">Join channel...</button>
+        <hr />
+        <button onclick="process.exit()">Exit</button>
+      </menu>
+    </li>
+    <li>
+      <button>Edit</button>
+      <menu type="list">
+        <button onclick="cut()">Cut</button>
+        <button onclick="copy()">Copy</button>
+        <button onclick="paste()">Paste</button>
+      </menu>
+    </li>
+  </menu>
+
+  <main>
+
+  </main>
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
