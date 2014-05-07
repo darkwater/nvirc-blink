@@ -1,0 +1,33 @@
+#settings-menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+  background: #2d2d2d;
+  display: block;
+  list-style: none;
+}
+#settings-menu li {
+  margin: 0;
+  padding: 5px 36px;
+  transition: background linear 0.06s, color linear 0.06s;
+}
+#settings-menu li:hover {
+  background: #474747;
+  color: #efefef;
+}
+#settings-menu li.active {
+  background: #999999;
+  color: #101010;
+}
+main {
+  position: absolute;
+  left: 200px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 15px;
+}

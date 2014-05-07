@@ -3,25 +3,28 @@
 <html>
 <head>
   <title>nvirc</title>
+  <link type="text/css" rel="stylesheet" href="css/application.css" />
   <link type="text/css" rel="stylesheet" href="css/main.css" />
 </head>
 <body>
   <menu type="toolbar" id="application-menu">
     <li>
-      <button>&#xf0e6;</button>
+      &#xf0e6;
       <menu type="list">
-        <button onclick="new()">Connect to server...</button>
-        <button onclick="save()">Join channel...</button>
-        <hr />
-        <button onclick="process.exit()">Exit</button>
+        <li onclick="nnew()">Connect to server...</li>
+        <li onclick="save()">Join channel...</li>
+        <li class="separator"><hr /></li>
+        <li onclick="nvirc.showSettings()">Settings</li>
+        <li class="separator"><hr /></li>
+        <li onclick="process.exit()">Exit</li>
       </menu>
     </li>
     <li>
-      <button>Edit</button>
+      Edit
       <menu type="list">
-        <button onclick="cut()">Cut</button>
-        <button onclick="copy()">Copy</button>
-        <button onclick="paste()">Paste</button>
+        <li onclick="cut()">Cut</li>
+        <li onclick="copy()">Copy</li>
+        <li onclick="paste()">Paste</li>
       </menu>
     </li>
   </menu>

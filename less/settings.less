@@ -1,0 +1,48 @@
+@import "colors.inc.less";
+
+@menu-width: 200px;
+@margin: 0;
+@spacing: 0;
+
+#settings-menu
+{
+    position: absolute;
+    left: @margin;
+    top: @margin;
+    bottom: @margin;
+    width: @menu-width;
+    margin: 0;
+    padding: 0;
+    background: @color-menu;
+    display: block;
+    list-style: none;
+    
+    & li
+    {
+        margin: 0;
+        padding: 5px 36px;
+        transition: background linear 0.06s, color linear 0.06s;
+
+        &:hover
+        {
+            background: @color-button-hover;
+            color: contrast(@color-button-hover, @color-text-dark, @color-text-light);
+        }
+
+        &.active
+        {
+            background: @color-button-active;
+            color: contrast(@color-button-active, @color-text-dark, @color-text-light);
+        }
+    }
+}
+
+main
+{
+    position: absolute;
+    left: @menu-width + @margin + @spacing;
+    top: @margin;
+    right: @margin;
+    bottom: @margin;
+    padding: 10px 15px;
+}

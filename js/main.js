@@ -1,4 +1,7 @@
-var nw = require('nw.gui');
+var nw = require('nw.gui'),
+    win = nw.Window.get();
+
+var nvirc = {};
 
 document.body.onkeypress = function (a)
 {
@@ -9,14 +12,15 @@ document.body.onkeypress = function (a)
             break;
 
         case 'i':
-            nw.Window.get().showDevTools();
+            win.showDevTools();
             break;
     }
 }
 
-$('#application-menu > li > button').click(function ()
+// {{{ Menu
+$('#application-menu > li').click(function ()
 {
-    var active = $('#application-menu > li > button.active');
+    var active = $('#application-menu > li.active');
 
     active.removeClass('active');
 
@@ -25,7 +29,7 @@ $('#application-menu > li > button').click(function ()
 })
 .hover(function ()
 {
-    var active = $('#application-menu > li > button.active');
+    var active = $('#application-menu > li.active');
     if (active.length > 0)
     {
         active.removeClass('active');
@@ -33,7 +37,24 @@ $('#application-menu > li > button').click(function ()
     }
 });
 
-$('main, #application-menu > li > menu button').click(function ()
+$('main, #application-menu > li > menu li').click(function ()
 {
-    $('#application-menu > li > button.active').removeClass('active');
-});
+    $('#application-menu > li.active').removeClass('active');
+}); // }}}
+
+
+nvirc.showSettings = function () // {{{
+{
+    nvirc.settingsPanel = nw.Window.open('settings.html',
+    {
+        title: 'nvirc',
+        icon: 'img/icon.png',
+        toolbar: false,
+        frame: true,
+        width: 700,
+        height: 600,
+        min_width: 200,
+        min_height: 100,
+        position: 'center'
+    });
+}
