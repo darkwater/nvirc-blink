@@ -3,6 +3,7 @@
 <html>
 <head>
   <title>nvirc</title>
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.css" />
   <link type="text/css" rel="stylesheet" href="css/application.css" />
   <link type="text/css" rel="stylesheet" href="css/main.css" />
 </head>
@@ -11,10 +12,10 @@
     <li>
       &#xf0e6;
       <menu type="list">
-        <li onclick="nnew()">Connect to server...</li>
-        <li onclick="save()">Join channel...</li>
+        <li onclick="return">Connect to server... <span class="menu-shortcut">^N</span></li>
+        <li onclick="return">Join channel... <span class="menu-shortcut">^J</span></li>
         <li class="separator"><hr /></li>
-        <li onclick="nvirc.showSettings()">Settings</li>
+        <li onclick="nvirc.showSettings()">Settings <span class="menu-shortcut">^P</span></li>
         <li class="separator"><hr /></li>
         <li onclick="process.exit()">Exit</li>
       </menu>
@@ -22,9 +23,9 @@
     <li>
       Edit
       <menu type="list">
-        <li onclick="cut()">Cut</li>
-        <li onclick="copy()">Copy</li>
-        <li onclick="paste()">Paste</li>
+        <li onclick="return">Cut <span class="menu-shortcut">^X</span></li>
+        <li onclick="return">Copy <span class="menu-shortcut">^C</span></li>
+        <li onclick="return">Paste <span class="menu-shortcut">^V</span></li>
       </menu>
     </li>
   </menu>

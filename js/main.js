@@ -18,8 +18,10 @@ document.body.onkeypress = function (a)
 }
 
 // {{{ Menu
-$('#application-menu > li').click(function ()
+$('#application-menu > li').click(function (e)
 {
+    if (e.target != this) return;
+
     var active = $('#application-menu > li.active');
 
     active.removeClass('active');
@@ -27,8 +29,10 @@ $('#application-menu > li').click(function ()
     if (active[0] != this)
         $(this).addClass('active');
 })
-.hover(function ()
+.hover(function (e)
 {
+    if (e.target != this) return;
+
     var active = $('#application-menu > li.active');
     if (active.length > 0)
     {
@@ -37,7 +41,7 @@ $('#application-menu > li').click(function ()
     }
 });
 
-$('main, #application-menu > li > menu li').click(function ()
+$('main, #application-menu > li > menu li:not(.separator)').click(function (e)
 {
     $('#application-menu > li.active').removeClass('active');
 }); // }}}

@@ -15,6 +15,7 @@
   display: block;
   margin: 0;
   padding: 0;
+  font-size: 0.9em;
 }
 #application-menu > li {
   position: relative;
@@ -23,8 +24,8 @@
   color: #efefef;
   transition: background linear 0.04s, color linear 0.04s;
   margin: 0;
-  padding: 3px 10px;
-  height: 20px;
+  padding: 5px 10px;
+  height: 16px;
   vertical-align: top;
 }
 #application-menu > li:hover {
@@ -45,6 +46,8 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 3px 10px;
+  height: 20px;
   font-size: 20px;
 }
 #application-menu > li > menu {
@@ -67,13 +70,19 @@
   position: relative;
   display: block;
   margin: 0;
-  padding: 4px 12px 4px 28px;
+  padding: 5px 12px 4px 12px;
   width: auto;
   text-align: left;
   color: #efefef;
   transition: background linear 0.04s, color linear 0.04s;
   font-family: 'Droid Sans', 'Liberation Sans', 'Segoe UI', 'Helvetica', sans-serif;
-  font-size: 12pt;
+  font-size: 10.8pt;
+}
+#application-menu > li > menu li .menu-shortcut {
+  float: right;
+  font-family: 'Droid Sans Mono', 'Liberation Sans Mono', 'Monaco', 'Courier New', monospace;
+  font-weight: bold;
+  color: #707070;
 }
 #application-menu > li > menu li.separator {
   padding: 0;

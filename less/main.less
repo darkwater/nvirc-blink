@@ -1,4 +1,4 @@
-@import 'colors.inc.less';
+@import 'variables.inc.less';
 
 .fa {
     display: inline-block;
@@ -19,6 +19,7 @@
     display: block;
     margin: 0;
     padding: 0;
+    font-size: 0.9em;
 
     & > li
     {
@@ -28,8 +29,8 @@
         color: @color-text-light;
         transition: background linear 0.04s, color linear 0.04s;
         margin: 0;
-        padding: 3px 10px;
-        height: 20px;
+        padding: 5px 10px;
+        height: 16px;
         vertical-align: top;
 
         &:hover
@@ -48,6 +49,8 @@
         &:first-child
         {
             .fa;
+            padding: 3px 10px;
+            height: 20px;
             font-size: 20px;
         }
 
@@ -73,13 +76,21 @@
                 position: relative;
                 display: block;
                 margin: 0;
-                padding: 4px 12px 4px 28px;
+                padding: 5px 12px 4px 12px;
                 width: auto;
                 text-align: left;
                 color: @color-text-light;
                 transition: background linear 0.04s, color linear 0.04s;
                 font-family: @fonts;
-                font-size: 12pt;
+                font-size: @font-size * 0.9;
+
+                & .menu-shortcut
+                {
+                    float: right;
+                    font-family: @fonts-mono;
+                    font-weight: bold;
+                    color: darken(@color-text-light, 50%);
+                }
 
                 &.separator
                 {

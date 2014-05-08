@@ -1,0 +1,15 @@
+<settings>
+    <section label="General">
+        <fieldset label="Daemon settings" layout="list">
+            <p>Lorem ipsum.</p>
+            <string label="Hostname" path="daemon.host" default="localhost" />
+            <number label="Port" path="daemon.port" default="3333" />
+            <string label="Password" path="daemon.password" />
+        </fieldset>
+    </section>
+    <section label="Notificatons">
+        <fieldset label="Hello world" layout="list">
+            <p>Dolor, sit amet.</p>
+        </fieldset>
+    </section>
+</settings>
