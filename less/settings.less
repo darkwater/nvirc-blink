@@ -1,4 +1,4 @@
-@import "colors.inc.less";
+@import "variables.inc.less";
 
 @menu-width: 200px;
 @margin: 0;
@@ -20,8 +20,13 @@
     & li
     {
         margin: 0;
-        padding: 5px 36px;
+        padding: 5px 8px;
         transition: background linear 0.06s, color linear 0.06s;
+
+        & .fa
+        {
+            margin-right: 5px;
+        }
 
         &:hover
         {
@@ -44,5 +49,54 @@ main
     top: @margin;
     right: @margin;
     bottom: @margin;
-    padding: 10px 15px;
+    padding: 0;
+}
+
+section
+{
+    border: none;
+    padding: 20px;
+
+    &:last-child
+    {
+        border-bottom: 3px solid #232323;
+    }
+
+    & h2
+    {
+        font-size: 1.2em;
+        margin: -20px -20px 20px -20px;
+        padding: 9px 20px 7px;
+        background: #252525;
+    }
+}
+
+.fullwidth-text
+{
+    display: block;
+    height: 28px;
+    line-height: 24px;
+
+    & input
+    {
+        background: #181818;
+        box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.4);
+        border: 1px solid #404040;
+        border-radius: 2px;
+        color: #efefef;
+        float: right;
+        width: 50%;
+        margin: 0;
+        padding: 3px 8px;
+
+        &::-webkit-input-placeholder
+        {
+            color: #404040;
+        }
+
+        &::-webkit-inner-spin-button
+        {
+            display: none;
+        }
+    }
 }

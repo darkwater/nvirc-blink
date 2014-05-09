@@ -1,13 +1,19 @@
 <settings>
-    <section label="General">
+    <section label="General" icon="gear">
         <fieldset label="Daemon settings" layout="list">
             <p>Lorem ipsum.</p>
             <string label="Hostname" path="daemon.host" default="localhost" />
             <number label="Port" path="daemon.port" default="3333" />
-            <string label="Password" path="daemon.password" />
+            <string label="Password" path="daemon.password" masked="true" />
+        </fieldset>
+        <fieldset label="Daemon settings" layout="list">
+            <p>Lorem ipsum.</p>
+            <string label="Hostname" path="daemon.host" default="localhost" />
+            <number label="Port" path="daemon.port" default="3333" />
+            <string label="Password" path="daemon.password" masked="true" />
         </fieldset>
     </section>
-    <section label="Notificatons">
+    <section label="Notificatons" icon="comment-o">
         <fieldset label="Hello world" layout="list">
             <p>Dolor, sit amet.</p>
         </fieldset>

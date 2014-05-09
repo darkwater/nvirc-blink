@@ -11,6 +11,3 @@ body {
   font-family: 'Droid Sans', 'Liberation Sans', 'Segoe UI', 'Helvetica', sans-serif;
   -webkit-user-select: none;
 }
-fieldset {
-  border: 1px solid #efefef;
-}

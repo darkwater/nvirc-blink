@@ -3,10 +3,25 @@
 <html style="background: #1d1f21">
 <head>
   <title>nvirc settings</title>
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.css" />
   <link type="text/css" rel="stylesheet" href="css/application.css" />
   <link type="text/css" rel="stylesheet" href="css/settings.css" />
 </head>
 <body>
+  <template id="f-list-string">
+    <label class="fullwidth-text">
+      %LABEL%
+      <input type="text" placeholder="%DEFAULT%" value="%CURVALUE%"  />
+    </label>
+  </template>
+
+  <template id="f-list-number">
+    <label class="fullwidth-text">
+      %LABEL%
+      <input type="number" placeholder="%DEFAULT%" value="%CURVALUE%" />
+    </label>
+  </template>
+
   <menu type="list" id="settings-menu"></menu>
   <main></main>
 
