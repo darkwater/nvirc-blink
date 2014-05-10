@@ -51,6 +51,11 @@ $xml.children().each(function (_, sectiondata)
                                 if (fielddata.attr('masked'))
                                     field.find('input').attr('type', 'password');
 
+                                field.find('input').blur(function ()
+                                {
+                                    alert($(this).val());
+                                });
+
                                 break;
                         }
 

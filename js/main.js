@@ -3,20 +3,6 @@ var nw = require('nw.gui'),
 
 var nvirc = {};
 
-document.body.onkeypress = function (a)
-{
-    switch (String.fromCharCode(a.charCode))
-    {
-        case 'r':
-            location.reload();
-            break;
-
-        case 'i':
-            win.showDevTools();
-            break;
-    }
-}
-
 // {{{ Menu
 $('#application-menu > li').click(function (e)
 {
@@ -49,6 +35,12 @@ $('main, #application-menu > li > menu li:not(.separator)').click(function (e)
 
 nvirc.showSettings = function () // {{{
 {
+    if (nvirc.settingsPanel)
+    {
+        nvirc.settingsPanel.focus();
+        return;
+    }
+
     nvirc.settingsPanel = nw.Window.open('settings.html',
     {
         title: 'nvirc',
@@ -57,8 +49,28 @@ nvirc.showSettings = function () // {{{
         frame: true,
         width: 700,
         height: 600,
-        min_width: 200,
+        min_width: 400,
         min_height: 100,
         position: 'center'
     });
-}
+
+    nvirc.settingsPanel.on('loaded', function ()
+    {
+        console.log(this);
+        this.window.nvirc = nvirc;
+    });
+    
+    nvirc.settingsPanel.on('closed', function ()
+    {
+        nvirc.settingsPanel = null;
+    });
+} // }}}
+
+win.on('close', function ()
+{
+    win.hide();
+
+    if (nvirc.settingsPanel) nvirc.settingsPanel.close();
+
+    win.close(true);
+});

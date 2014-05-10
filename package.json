@@ -12,7 +12,7 @@
     "width": 1000,
     "height": 800,
     "position": "mouse",
-    "min_width": 50,
-    "min_height": 50
+    "min_width": 400,
+    "min_height": 200
   }
 }
