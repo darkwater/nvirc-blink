@@ -22,10 +22,31 @@
     </label>
   </template>
 
+  <template id="f-list-p">
+    <p>
+      %CONTENTS%
+    </p>
+  </template>
+
   <menu type="list" id="settings-menu"></menu>
   <main></main>
 
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/settings.js"></script>
+  <script type="text/javascript">
+    document.body.onkeypress = function (a)
+    {
+        switch (String.fromCharCode(a.charCode))
+        {
+            case 'r':
+                location.reload();
+                break;
+
+            case 'i':
+                require('nw.gui').Window.get().showDevTools();
+                break;
+        }
+    }
+  </script>
 </body>
 </html>

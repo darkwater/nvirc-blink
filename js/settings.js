@@ -1,19 +1,5 @@
 var fs = require('fs');
 
-document.body.onkeypress = function (a)
-{
-    switch (String.fromCharCode(a.charCode))
-    {
-        case 'r':
-            location.reload();
-            break;
-
-        case 'i':
-            require('nw.gui').Window.get().showDevTools();
-            break;
-    }
-}
-
 var xml = fs.readFileSync('data/settings.xml');
     $xml = $( $.parseXML(xml.toString()) ).children(0);
 
@@ -51,6 +37,7 @@ $xml.children().each(function (_, sectiondata)
                             attr = attr.match(/[A-Z]+/)[0].toLowerCase();
 
                             if (attr == 'curvalue') return '';
+                            if (attr == 'contents') return fielddata.text();
 
                             return fielddata.attr(attr) || '';
                         });
