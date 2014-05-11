@@ -11,14 +11,14 @@
   <template id="f-list-string">
     <label class="fullwidth-text">
       %LABEL%
-      <input type="text" placeholder="%DEFAULT%" value="%CURVALUE%"  />
+      <input type="text" placeholder="%EXAMPLE%" value="%CURVALUE%" data-path="%PATH%" />
     </label>
   </template>
 
   <template id="f-list-number">
     <label class="fullwidth-text">
       %LABEL%
-      <input type="number" placeholder="%DEFAULT%" value="%CURVALUE%" />
+      <input type="number" placeholder="%EXAMPLE%" value="%CURVALUE%" data-path="%PATH%" />
     </label>
   </template>
 
@@ -36,6 +36,8 @@
   <script type="text/javascript">
     document.body.onkeypress = function (a)
     {
+        if (!a.ctrlKey) return;
+
         switch (String.fromCharCode(a.charCode))
         {
             case 'r':

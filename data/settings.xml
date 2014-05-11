@@ -2,9 +2,9 @@
     <section label="General" icon="gear">
         <fieldset label="Daemon settings" layout="list">
             <p>Lorem ipsum.</p>
-            <string label="Hostname" path="daemon.host" default="localhost" />
-            <number label="Port" path="daemon.port" default="3333" />
-            <string label="Password" path="daemon.password" masked="true" />
+            <string label="Hostname" path="local.daemon.host" example="localhost" />
+            <number label="Port" path="local.daemon.port" example="3333" />
+            <string label="Password" path="local.daemon.password" masked="true" />
         </fieldset>
     </section>
     <section label="Notificatons" icon="comment-o">

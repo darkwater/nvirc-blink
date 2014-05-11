@@ -1,7 +1,8 @@
 var fs = require('fs');
 
-var xml = fs.readFileSync('data/settings.xml');
-    $xml = $( $.parseXML(xml.toString()) ).children(0);
+var xml = fs.readFileSync('data/settings.xml'),
+    $xml = $( $.parseXML(xml.toString()) ).children(0),
+    nvirc = global.nvirc;
 
 $xml.children().each(function (_, sectiondata)
 {
@@ -36,7 +37,7 @@ $xml.children().each(function (_, sectiondata)
                         {
                             attr = attr.match(/[A-Z]+/)[0].toLowerCase();
 
-                            if (attr == 'curvalue') return '';
+                            if (attr == 'curvalue') return nvirc.settings.get(fielddata.attr('path'));
                             if (attr == 'contents') return fielddata.text();
 
                             return fielddata.attr(attr) || '';
@@ -53,7 +54,16 @@ $xml.children().each(function (_, sectiondata)
 
                                 field.find('input').blur(function ()
                                 {
-                                    alert($(this).val());
+                                    nvirc.settings.set($(this).data('path'), $(this).val());
+                                });
+
+                                break;
+
+                            case 'number':
+
+                                field.find('input').blur(function ()
+                                {
+                                    nvirc.settings.set($(this).data('path'), Number($(this).val()));
                                 });
 
                                 break;

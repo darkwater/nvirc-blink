@@ -1,18 +1,19 @@
 {
-  "main": "index.html",
-  "name": "nvirc-blink",
-  "description": "nvirc blink frontend",
-  "version": "0.1.0",
-  "keywords": [ "irc" ],
-  "window": {
-    "title": "nvirc",
-    "icon": "img/icon.png",
-    "toolbar": false,
-    "frame": true,
-    "width": 1000,
-    "height": 800,
-    "position": "mouse",
-    "min_width": 400,
-    "min_height": 200
-  }
+    "main": "index.html",
+    "name": "nvirc-blink",
+    "description": "nvirc blink frontend",
+    "version": "0.1.0",
+    "keywords": [ "irc" ],
+    "window":
+    {
+        "title": "nvirc",
+        "icon": "img/icon.png",
+        "toolbar": false,
+        "frame": true,
+        "width": 1000,
+        "height": 800,
+        "position": "mouse",
+        "min_width": 400,
+        "min_height": 200
+    }
 }
