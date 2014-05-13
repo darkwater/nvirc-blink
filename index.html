@@ -1,57 +1,69 @@
 <!DOCTYPE html>
-<!-- vim: set sw=2 sts=2 -->
 <html>
 <head>
-  <title>nvirc</title>
-  <link type="text/css" rel="stylesheet" href="css/font-awesome.css" />
-  <link type="text/css" rel="stylesheet" href="css/application.css" />
-  <link type="text/css" rel="stylesheet" href="css/main.css" />
+    <title>nvirc</title>
+    <link type="text/css" rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-  <menu type="toolbar" id="application-menu">
-    <li>
-      &#xf0e6;
-      <menu type="list">
-        <li onclick="return">Connect to server... <span class="menu-shortcut">^N</span></li>
-        <li onclick="return">Join channel... <span class="menu-shortcut">^J</span></li>
-        <li class="separator"><hr /></li>
-        <li onclick="nvirc.showSettings()">Settings <span class="menu-shortcut">^P</span></li>
-        <li class="separator"><hr /></li>
-        <li onclick="process.exit()">Exit</li>
-      </menu>
-    </li>
-    <li>
-      Edit
-      <menu type="list">
-        <li onclick="return">Cut <span class="menu-shortcut">^X</span></li>
-        <li onclick="return">Copy <span class="menu-shortcut">^C</span></li>
-        <li onclick="return">Paste <span class="menu-shortcut">^V</span></li>
-      </menu>
-    </li>
-  </menu>
+    <menu type="toolbar" id="application-menu">
+        <li>
+            <i class="fa fa-comments-o"></i>
+            <menu type="list">
+                <li onclick="return">Connect to server... <span class="menu-shortcut">^N</span></li>
+                <li onclick="return">Join channel... <span class="menu-shortcut">^J</span></li>
+                <li class="separator"><hr /></li>
+                <li onclick="nvirc.showSettings()">Settings <span class="menu-shortcut">^P</span></li>
+                <li class="separator"><hr /></li>
+                <li onclick="process.exit()">Exit</li>
+            </menu>
+        </li>
+        <li>
+            Edit
+            <menu type="list">
+                <li onclick="return">Cut <span class="menu-shortcut">^X</span></li>
+                <li onclick="return">Copy <span class="menu-shortcut">^C</span></li>
+                <li onclick="return">Paste <span class="menu-shortcut">^V</span></li>
+            </menu>
+        </li>
+    </menu>
 
-  <main>
+    <main>
+        <menu type="list" id="server-list">
+            <li class="server">Freenode</li>
+            <li>
+                <ul class="server-channels">
+                    <li class="channel talked"><s>#</s>novaember</li>
+                    <li class="channel talked"><s>#</s>node.js</li>
+                    <li class="channel activity"><s>##</s>fpp</li>
+                    <li class="channel mentioned">Mro95</li>
+                    <li class="channel">Ratchet302</li>
+                </ul>
+            </li>
+            <li class="server">OFTC</li>
+            <li>
+                <ul class="server-channels">
+                    <li class="channel"><s>#</s>love</li>
+                </ul>
+            </li>
+        </menu>
+    </main>
 
-  </main>
-
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript">
-    document.body.onkeypress = function (a)
-    {
-        if (!a.ctrlKey) return;
-
-        switch (String.fromCharCode(a.charCode + 64))
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+        document.body.onkeypress = function (a)
         {
-            case 'R':
-                location.reload();
-                break;
+            if (a.ctrlKey) switch (String.fromCharCode(a.charCode + 64))
+            {
+                case 'R':
+                    location.reload();
+                    break;
 
-            case 'I':
-                require('nw.gui').Window.get().showDevTools();
-                break;
+                case 'I':
+                    require('nw.gui').Window.get().showDevTools();
+                    break;
+            }
         }
-    }
-  </script>
+    </script>
 </body>
 </html>

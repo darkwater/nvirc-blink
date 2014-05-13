@@ -5,6 +5,7 @@
             <string label="Hostname" path="local.daemon.host" example="localhost" />
             <number label="Port" path="local.daemon.port" example="3333" />
             <string label="Password" path="local.daemon.password" masked="true" />
+            <button label="Connect" action="nvirc.connect()" />
         </fieldset>
     </section>
     <section label="Notificatons" icon="comment-o">

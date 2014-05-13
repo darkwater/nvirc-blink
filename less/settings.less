@@ -1,4 +1,5 @@
-@import "variables.inc.less";
+@import 'application.inc.less';
+@import "font-awesome.inc.less";
 
 @menu-width: 200px;
 @margin: 0;
@@ -69,6 +70,13 @@ section
         padding: 9px 20px 7px;
         background: #252525;
     }
+
+    &:after // Clearfix
+    {
+        content: ' ';
+        display: table;
+        clear: both;
+    }
 }
 
 .fullwidth-text
@@ -98,5 +106,34 @@ section
         {
             display: none;
         }
+    }
+}
+
+.right-button
+{
+    float: right;
+    background: @color-button;
+    border: none;
+    color: @color-text-light;
+    margin-top: 5px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: background linear 0.06s, color linear 0.04s;
+
+    &:last-child
+    {
+        margin-bottom: -10px;
+    }
+
+    &:hover
+    {
+        background: @color-button-hover;
+        color: contrast(@color-button-hover, @color-text-dark, @color-text-light);
+    }
+
+    &:active
+    {
+        background: @color-button-active;
+        color: contrast(@color-button-active, @color-text-dark, @color-text-light);
     }
 }

@@ -54,7 +54,9 @@ $xml.children().each(function (_, sectiondata)
 
                                 field.find('input').blur(function ()
                                 {
-                                    nvirc.settings.set($(this).data('path'), $(this).val());
+                                    nvirc.settings.set($(this).data('path'), ($(this).val() + 'a').slice(0, -1));
+                                                            // Workaround for an anomaly that inserts null bytes
+                                                            // into a value obtained from a password field
                                 });
 
                                 break;

@@ -1,54 +1,51 @@
 <!DOCTYPE html>
-<!-- vim: set sw=2 sts=2 -->
 <html style="background: #1d1f21">
 <head>
-  <title>nvirc settings</title>
-  <link type="text/css" rel="stylesheet" href="css/font-awesome.css" />
-  <link type="text/css" rel="stylesheet" href="css/application.css" />
-  <link type="text/css" rel="stylesheet" href="css/settings.css" />
+    <title>nvirc settings</title>
+    <link type="text/css" rel="stylesheet" href="css/settings.css" />
 </head>
 <body>
-  <template id="f-list-string">
-    <label class="fullwidth-text">
-      %LABEL%
-      <input type="text" placeholder="%EXAMPLE%" value="%CURVALUE%" data-path="%PATH%" />
-    </label>
-  </template>
+    <template id="f-list-string">
+        <label class="fullwidth-text">
+            %LABEL%
+            <input type="text" placeholder="%EXAMPLE%" value="%CURVALUE%" data-path="%PATH%" />
+        </label>
+    </template>
 
-  <template id="f-list-number">
-    <label class="fullwidth-text">
-      %LABEL%
-      <input type="number" placeholder="%EXAMPLE%" value="%CURVALUE%" data-path="%PATH%" />
-    </label>
-  </template>
+    <template id="f-list-number">
+        <label class="fullwidth-text">
+            %LABEL%
+            <input type="number" placeholder="%EXAMPLE%" value="%CURVALUE%" data-path="%PATH%" />
+        </label>
+    </template>
 
-  <template id="f-list-p">
-    <p>
-      %CONTENTS%
-    </p>
-  </template>
+    <template id="f-list-p">
+        <p>%CONTENTS%</p>
+    </template>
 
-  <menu type="list" id="settings-menu"></menu>
-  <main></main>
+    <template id="f-list-button">
+        <button class="right-button" onclick="%ACTION%">%LABEL%</button>
+    </template>
 
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/settings.js"></script>
-  <script type="text/javascript">
-    document.body.onkeypress = function (a)
-    {
-        if (!a.ctrlKey) return;
+    <menu type="list" id="settings-menu"></menu>
+    <main></main>
 
-        switch (String.fromCharCode(a.charCode))
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
+    <script type="text/javascript">
+        document.body.onkeypress = function (a)
         {
-            case 'r':
-                location.reload();
-                break;
+            if (a.ctrlKey) switch (String.fromCharCode(a.charCode + 64))
+            {
+                case 'R':
+                    location.reload();
+                    break;
 
-            case 'i':
-                require('nw.gui').Window.get().showDevTools();
-                break;
+                case 'I':
+                    require('nw.gui').Window.get().showDevTools();
+                    break;
+            }
         }
-    }
-  </script>
+    </script>
 </body>
 </html>

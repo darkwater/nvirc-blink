@@ -1,9 +1,14 @@
 var nw = require('nw.gui'),
     fs = require('fs'),
+    tls = require('tls'),
     win = nw.Window.get();
 
 var nvirc = {};
 global.nvirc = nvirc;
+nvirc.version = { major: 0, minor: 1, patch: 0 }; // Loosely following the Semantic Versioning system
+nvirc.version.string = 'nvirc-blink ' + nvirc.version.major
+                                + '.' + nvirc.version.minor
+                                + '.' + nvirc.version.patch;
 
 nvirc.settings = { local: {}, remote: {} }; // {{{
 nvirc.settings.default = JSON.parse(fs.readFileSync('data/default-settings.json'));
@@ -50,6 +55,103 @@ nvirc.settings.set = function (path, value)
 }
 // }}}
 
+nvirc.showSettings = function () // {{{
+{
+    if (nvirc.settingsPanel)
+    {
+        nvirc.settingsPanel.focus();
+        return;
+    }
+
+    nvirc.settingsPanel = nw.Window.open('settings.html',
+    {
+        title: 'nvirc',
+        icon: 'img/icon.png',
+        toolbar: false,
+        frame: true,
+        width: 700,
+        height: 600,
+        min_width: 400,
+        min_height: 100,
+        position: 'center'
+    });
+    
+    nvirc.settingsPanel.on('closed', function ()
+    {
+        delete nvirc.settingsPanel;
+    });
+} // }}}
+
+nvirc.connect = function () // {{{
+{
+    if (nvirc.connection) nvirc.connection.end();
+
+    nvirc.connection = tls.connect({
+        host: nvirc.settings.local.daemon.host,
+        port: nvirc.settings.local.daemon.port,
+        rejectUnauthorized: false
+    }, function ()
+    {
+        this.setEncoding('utf8');
+        this.write(nvirc.version.string);
+        this.once('data', function (data)
+        {
+            var res;
+            if (!(res = data.match(/^(nvircd[a-z0-9-]*) ([0-9.a-z]+)$/)))
+            {
+                console.log(res);
+                conn.end();
+                return;
+            }
+
+            console.log('Connection: ' + res[0]);
+
+            this.write(new Buffer(nvirc.settings.local.daemon.password));
+
+            function badPassword(e)
+            {
+                console.log(e);
+                alert('Bad password.');
+            }
+            this.once('end', badPassword);
+            this.once('data', function (data)
+            {
+                if (data == 'OK')
+                {
+                    this.removeListener('end', badPassword);
+
+                    // Success!
+
+                    this.on('data', function (data)
+                    {
+                        if (data == 'PING')
+                        {
+                            data.write('PONG');
+                        }
+                        else if (data == 'PONG')
+                        {
+                            console.log('Pong!');
+                        }
+                        else
+                        {
+
+                        }
+                    });
+
+                    setInterval(function ()
+                    {
+                        nvirc.connection.write('PING');
+                    }, 5000);
+                }
+            });
+        });
+    })
+    .on('end', function ()
+    {
+        delete nvirc.connection;
+    });
+} // }}}
+
 // {{{ Menu
 $('#application-menu > li').click(function (e)
 {
@@ -79,32 +181,11 @@ $('main, #application-menu > li > menu li:not(.separator)').click(function (e)
     $('#application-menu > li.active').removeClass('active');
 }); // }}}
 
-nvirc.showSettings = function () // {{{
+// {{{ Server list
+$('#server-list .server').click(function ()
 {
-    if (nvirc.settingsPanel)
-    {
-        nvirc.settingsPanel.focus();
-        return;
-    }
-
-    nvirc.settingsPanel = nw.Window.open('settings.html',
-    {
-        title: 'nvirc',
-        icon: 'img/icon.png',
-        toolbar: false,
-        frame: true,
-        width: 700,
-        height: 600,
-        min_width: 400,
-        min_height: 100,
-        position: 'center'
-    });
-    
-    nvirc.settingsPanel.on('closed', function ()
-    {
-        delete nvirc.settingsPanel;
-    });
-} // }}}
+    $(this).toggleClass('active');
+}); // }}}
 
 win.on('close', function ()
 {
