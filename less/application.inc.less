@@ -11,3 +11,32 @@ html, body
     font-family: @fonts;
     -webkit-user-select: none;
 }
+
+::-webkit-scrollbar {
+    width: 2ch;
+    height: 2ch;
+}
+ 
+::-webkit-scrollbar-track {
+    background: none;
+    border: none;
+    border-right: 1ch solid #252525;
+    border-radius: 0;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: none;
+    border: none;
+    border-right: 1ch solid #323232;
+    border-radius: 0;
+
+    &:hover
+    {
+        border-right-color: #444444;
+    }
+
+    &:active
+    {
+        border-right-color: #4f4f4f;
+    }
+}

@@ -1,20 +1,3 @@
-html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  background: #1d1f21;
-  color: #efefef;
-  cursor: default;
-  font-family: 'Droid Sans', 'Liberation Sans', 'Segoe UI', 'Helvetica', sans-serif;
-  -webkit-user-select: none;
-}
-/*!
- *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */
 /* FONT PATH
  * -------------------------- */
 @font-face {
@@ -1349,6 +1332,45 @@ body {
 .fa-plus-square-o:before {
   content: "\f196";
 }
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #1d1f21;
+  color: #efefef;
+  cursor: default;
+  font-family: 'Droid Sans', 'Liberation Sans', 'Segoe UI', 'Helvetica', sans-serif;
+  -webkit-user-select: none;
+}
+::-webkit-scrollbar {
+  width: 2ch;
+  height: 2ch;
+}
+::-webkit-scrollbar-track {
+  background: none;
+  border: none;
+  border-right: 1ch solid #252525;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb {
+  background: none;
+  border: none;
+  border-right: 1ch solid #323232;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  border-right-color: #444444;
+}
+::-webkit-scrollbar-thumb:active {
+  border-right-color: #4f4f4f;
+}
+.mono-font {
+  font-family: 'Droid Sans Mono', 'Liberation Sans Mono', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+}
 #settings-menu {
   position: absolute;
   left: 0;
@@ -1398,7 +1420,7 @@ section h2 {
   padding: 9px 20px 7px;
   background: #252525;
 }
-section:after {
+section::after {
   content: ' ';
   display: table;
   clear: both;

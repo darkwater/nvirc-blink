@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="borderless">
 <head>
     <title>nvirc</title>
     <link type="text/css" rel="stylesheet" href="css/main.css" />
@@ -18,35 +18,114 @@
             </menu>
         </li>
         <li>
-            Edit
+            Debug
             <menu type="list">
-                <li onclick="return">Cut <span class="menu-shortcut">^X</span></li>
-                <li onclick="return">Copy <span class="menu-shortcut">^C</span></li>
-                <li onclick="return">Paste <span class="menu-shortcut">^V</span></li>
+                <li onclick="location.reload()">Reload <span class="menu-shortcut">^R</span></li>
+                <li onclick="require('nw.gui').Window.get().showDevTools()">Devtools <span class="menu-shortcut">^I</span></li>
             </menu>
         </li>
     </menu>
 
-    <main>
+    <section id="application">
         <menu type="list" id="server-list">
-            <li class="server">Freenode</li>
+            <li class="server"><span>Freenode</span></li>
             <li>
                 <ul class="server-channels">
-                    <li class="channel talked"><s>#</s>novaember</li>
+                    <li class="channel active"><s>#</s>novaember</li>
                     <li class="channel talked"><s>#</s>node.js</li>
                     <li class="channel activity"><s>##</s>fpp</li>
                     <li class="channel mentioned">Mro95</li>
                     <li class="channel">Ratchet302</li>
                 </ul>
             </li>
-            <li class="server">OFTC</li>
+            <li class="server mentioned"><span>OFTC</span></li>
             <li>
                 <ul class="server-channels">
-                    <li class="channel"><s>#</s>love</li>
+                    <li class="channel mentioned"><s>#</s>love</li>
                 </ul>
             </li>
         </menu>
-    </main>
+
+        <main>
+            <header>
+                <div>@Darkwater [+i] on Freenode/#novaember [+nt]</div>
+                <div>unek voted worst admin of the year all years</div>
+            </header>
+            <section id="chatlog">
+                <div class="lines">
+                    <div class="line" data-timestamp="12:34">
+                        <span class="nick"><s>@</s>Darkwater</span>
+                        Hello, world!
+                    </div>
+                    <div class="line" data-timestamp="12:34">
+                        <span class="nick"><s>+</s>Ratchet302</span>
+                        world says shut up
+                    </div>
+                    <div class="line" data-timestamp="12:35">
+                        <span class="nick"><s>&amp;</s>Mro95</span>
+                        inderdeed
+                    </div>
+                    <div class="line" data-timestamp="12:35">
+                        <span class="nick"><s>@</s>Darkwater</span>
+                        wow rude
+                    </div>
+                    <div class="line" data-timestamp="12:35">
+                        <span class="nick">faget</span>
+                        hi love &lt;3
+                    </div>
+                    <div class="line" data-timestamp="12:35">
+                        <span class="nick"><s>@</s>Darkwater</span>
+                        shut up faget
+                    </div>
+                    <div class="line" data-timestamp="12:36">
+                        <span class="nick"><s>&amp;</s>Mro95</span>
+                        shut up faget
+                    </div>
+                    <div class="line" data-timestamp="12:38">
+                        <span class="nick"><s>+</s>Ratchet302</span>
+                        shut up faget
+                    </div>
+                    <div class="line" data-timestamp="12:39">
+                        <span class="nick">Nixola</span>
+                        shut up faget
+                    </div>
+                    <div class="line" data-timestamp="12:40">
+                        <span class="nick">faget</span>
+                        :(
+                    </div>
+                    <div class="line" data-timestamp="12:40">
+                        <span class="nick"><s>@</s>Darkwater</span>
+                        shut up faget
+                    </div>
+                    <div class="line" data-timestamp="12:44">
+                        <span class="nick"><s>+</s>Ratchet302</span>
+                        !potato
+                    </div>
+                    <div class="line" data-timestamp="12:44">
+                        <span class="nick">Botty</span>
+                        <div>Ratchet302: you have 0 potato points</div>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <span class="own-nick"><s>@</s>Darkwater</span>
+                <div id="chat-input">
+                    <input type="text" />
+                </div>
+            </footer>
+        </main>
+
+        <aside id="nick-list">
+            <ul>
+                <li class="operator">Darkwater</li>
+                <li class="halfop">Mro95</li>
+                <li class="voice">Ratchet302</li>
+                <li>Botty</li>
+                <li>Nixola</li>
+                <li>faget</li>
+            </ul>
+        </aside>
+    </section>
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
@@ -64,6 +143,8 @@
                     break;
             }
         }
+
+        for (var i = 0; i < 3; i++) $("#chatlog .lines").append($("#chatlog .lines > *").clone());
     </script>
 </body>
 </html>

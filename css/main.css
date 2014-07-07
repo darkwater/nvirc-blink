@@ -1,20 +1,3 @@
-html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  background: #1d1f21;
-  color: #efefef;
-  cursor: default;
-  font-family: 'Droid Sans', 'Liberation Sans', 'Segoe UI', 'Helvetica', sans-serif;
-  -webkit-user-select: none;
-}
-/*!
- *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */
 /* FONT PATH
  * -------------------------- */
 @font-face {
@@ -1349,6 +1332,45 @@ body {
 .fa-plus-square-o:before {
   content: "\f196";
 }
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #1d1f21;
+  color: #efefef;
+  cursor: default;
+  font-family: 'Droid Sans', 'Liberation Sans', 'Segoe UI', 'Helvetica', sans-serif;
+  -webkit-user-select: none;
+}
+::-webkit-scrollbar {
+  width: 2ch;
+  height: 2ch;
+}
+::-webkit-scrollbar-track {
+  background: none;
+  border: none;
+  border-right: 1ch solid #252525;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb {
+  background: none;
+  border: none;
+  border-right: 1ch solid #323232;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  border-right-color: #444444;
+}
+::-webkit-scrollbar-thumb:active {
+  border-right-color: #4f4f4f;
+}
+.mono-font {
+  font-family: 'Droid Sans Mono', 'Liberation Sans Mono', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+}
 #application-menu {
   width: 100%;
   height: 26px;
@@ -1358,30 +1380,30 @@ body {
   margin: 0;
   padding: 0;
   font-size: 0.9em;
+  z-index: 1000;
 }
 #application-menu > li {
+  transition: background linear 0.06s, color linear 0.06s;
+  background: #2d2d2d;
+  cursor: pointer;
   position: relative;
   display: inline-block;
-  background: #2d2d2d;
   color: #efefef;
-  transition: background linear 0.04s, color linear 0.04s;
   margin: 0;
   padding: 5px 10px;
   height: 16px;
   vertical-align: top;
 }
-#application-menu > li i.fa {
-  pointer-events: none;
-}
 #application-menu > li:hover {
   background: #474747;
   color: #efefef;
 }
-#application-menu > li.active,
 #application-menu > li:active {
   background: #999999;
-  color: #101010;
-  outline: none;
+  color: #101010 !important;
+}
+#application-menu > li i.fa {
+  pointer-events: none;
 }
 #application-menu > li:first-child {
   padding: 1px 10px 5px;
@@ -1400,7 +1422,7 @@ body {
   list-style: none;
   min-width: 200px;
   width: calc(-webkit-max-content + 100px);
-  transition: opacity linear 0.2s;
+  transition: opacity linear 0.1s;
   z-index: 100;
   box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.4);
 }
@@ -1447,7 +1469,7 @@ body {
   transition: opacity linear 0.06s;
   z-index: 101;
 }
-main {
+#application {
   position: absolute;
   top: 26px;
   left: 0;
@@ -1459,19 +1481,52 @@ main {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 250px;
+  width: 220px;
   border-right: 5px solid #2d2d2d;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 #server-list li.server {
-  margin: 0;
-  padding: 5px 8px;
   transition: background linear 0.06s, color linear 0.06s;
   background: #252525;
+  cursor: pointer;
+  margin: 0;
+  padding: 5px 8px;
 }
-#server-list li.server:before {
+#server-list li.server:hover {
+  background: #3f3f3f;
+  color: #efefef;
+}
+#server-list li.server:active {
+  background: #999999;
+  color: #101010 !important;
+}
+#server-list li.server:not(.active).mentioned {
+  -webkit-animation: channel-mentioned 2s infinite alternate ease;
+}
+#server-list li.server:not(.active).mentioned::after {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 1.2857142857142858em;
+  text-align: center;
+  position: relative;
+  top: 2px;
+  float: right;
+  content: "\f12a";
+}
+#server-list li.server:not(.active).mentioned::after.pull-left {
+  margin-right: .3em;
+}
+#server-list li.server:not(.active).mentioned::after.pull-right {
+  margin-left: .3em;
+}
+#server-list li.server::before {
   content: '';
   display: inline-block;
   width: 0;
@@ -1483,17 +1538,8 @@ main {
   margin-right: 12px;
   margin-left: 5px;
   -webkit-transform-origin: center;
-  transition: -webkit-transform linear 0.1s;
 }
-#server-list li.server:hover {
-  background: #474747;
-  color: #efefef;
-}
-#server-list li.server:active {
-  background: #999999;
-  color: #101010;
-}
-#server-list li.server.active:before {
+#server-list li.server.active::before {
   -webkit-transform: rotate(90deg);
 }
 #server-list li.server + li {
@@ -1511,19 +1557,30 @@ main {
   list-style: none;
 }
 #server-list li.server + li .channel {
-  margin: 0;
-  padding: 5px 12px 5px 24px;
   transition: background linear 0.06s, color linear 0.06s;
+  background: #1d1f21;
+  cursor: pointer;
   font-family: 'Droid Sans Mono', 'Liberation Sans Mono', 'Monaco', 'Courier New', monospace;
   font-size: 0.9em;
+  margin: 0;
+  padding: 5px 12px 5px 24px;
+}
+#server-list li.server + li .channel:hover {
+  background: #35393c;
+  color: #efefef;
+}
+#server-list li.server + li .channel:active {
+  background: #999999;
+  color: #101010 !important;
 }
 #server-list li.server + li .channel s {
   opacity: 0.5;
   text-decoration: none;
 }
-#server-list li.server + li .channel.activity:after,
-#server-list li.server + li .channel.talked:after,
-#server-list li.server + li .channel.mentioned:after {
+#server-list li.server + li .channel.activity::after,
+#server-list li.server + li .channel.talked::after,
+#server-list li.server + li .channel.mentioned::after,
+#server-list li.server + li .channel.active::after {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1534,47 +1591,213 @@ main {
   width: 1.2857142857142858em;
   text-align: center;
   float: right;
+  line-height: 1.2;
 }
-#server-list li.server + li .channel.activity:after.pull-left,
-#server-list li.server + li .channel.talked:after.pull-left,
-#server-list li.server + li .channel.mentioned:after.pull-left {
+#server-list li.server + li .channel.activity::after.pull-left,
+#server-list li.server + li .channel.talked::after.pull-left,
+#server-list li.server + li .channel.mentioned::after.pull-left,
+#server-list li.server + li .channel.active::after.pull-left {
   margin-right: .3em;
 }
-#server-list li.server + li .channel.activity:after.pull-right,
-#server-list li.server + li .channel.talked:after.pull-right,
-#server-list li.server + li .channel.mentioned:after.pull-right {
+#server-list li.server + li .channel.activity::after.pull-right,
+#server-list li.server + li .channel.talked::after.pull-right,
+#server-list li.server + li .channel.mentioned::after.pull-right,
+#server-list li.server + li .channel.active::after.pull-right {
   margin-left: .3em;
 }
-#server-list li.server + li .channel.activity:after {
+#server-list li.server + li .channel.activity::after {
   content: "\f141";
   opacity: 0.4;
 }
-#server-list li.server + li .channel.talked:after {
+#server-list li.server + li .channel.talked::after {
   content: "\f0e5";
   opacity: 0.8;
-}
-#server-list li.server + li .channel.mentioned:after {
-  content: "\f12a";
+  line-height: 1.0;
 }
 #server-list li.server + li .channel.mentioned {
   -webkit-animation: channel-mentioned 2s infinite alternate ease;
 }
-#server-list li.server + li .channel:hover {
-  background: #474747;
-  color: #efefef;
+#server-list li.server + li .channel.mentioned::after {
+  content: "\f12a";
 }
-#server-list li.server + li .channel:active {
-  background: #999999;
-  color: #101010;
+#server-list li.server + li .channel.active {
+  color: #00afff;
+}
+#server-list li.server + li .channel.active::after {
+  content: "\f054";
 }
 #server-list li.server.active + li {
   height: auto;
 }
+#nick-list {
+  font-family: 'Droid Sans Mono', 'Liberation Sans Mono', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 220px;
+  border-left: 5px solid #2d2d2d;
+}
+#nick-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#nick-list ul li {
+  transition: background linear 0.06s, color linear 0.06s;
+  background: #252525;
+  cursor: pointer;
+  margin: 0;
+  padding: 5px 8px 5px 30px;
+}
+#nick-list ul li:hover {
+  background: #3f3f3f;
+  color: #efefef;
+}
+#nick-list ul li:active {
+  background: #999999;
+  color: #101010 !important;
+}
+#nick-list ul li::before {
+  display: inline-block;
+  width: 30px;
+  float: left;
+  margin-left: -30px;
+  text-align: center;
+}
+#nick-list ul li.operator::before {
+  content: '@';
+}
+#nick-list ul li.halfop::before {
+  content: '&';
+}
+#nick-list ul li.voice::before {
+  content: '+';
+}
+main {
+  font-family: 'Droid Sans Mono', 'Liberation Sans Mono', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+  position: absolute;
+  left: 225px;
+  top: 0;
+  right: 225px;
+  bottom: 0;
+  -webkit-user-select: none;
+  cursor: auto;
+}
+main::after {
+  content: '';
+  position: absolute;
+  left: 15.4ch;
+  top: 0;
+  width: 0.2ch;
+  bottom: 0;
+  background: #252525;
+  pointer-events: none;
+  z-index: 3;
+}
+main header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  background: #252525;
+  padding: 0.3em 1ch;
+  height: 2.4em;
+  line-height: 1.2em;
+  z-index: 4;
+  margin-bottom: -3em;
+  -webkit-user-select: auto;
+}
+main footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 1.6em;
+  padding-top: 0.3em;
+  background: #252525;
+  z-index: 2;
+}
+main footer .own-nick {
+  position: absolute;
+  left: 1ch;
+  bottom: 0.4em;
+  width: 13ch;
+  text-align: right;
+}
+main footer .own-nick s {
+  float: left;
+  opacity: 0.7;
+  text-decoration: none;
+}
+#chat-input {
+  position: absolute;
+  left: 17ch;
+  bottom: 0.4em;
+  right: 1ch;
+  display: block;
+  height: 1.2em;
+  margin-right: 8ch;
+}
+#chat-input > input {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #efefef;
+  font-family: 'Droid Sans Mono', 'Liberation Sans Mono', 'Monaco', 'Courier New', monospace;
+  -webkit-user-select: auto;
+}
+#chat-input > input:focus {
+  outline: none;
+}
+#chatlog {
+  position: absolute;
+  top: 3em;
+  bottom: 1.9em;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+  -webkit-user-select: auto;
+}
+#chatlog > .lines {
+  padding: 0.5em 0 0.5em 17ch;
+}
+#chatlog > .lines > .line > .nick {
+  display: inline-block;
+  width: 13ch;
+  float: left;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: -17ch;
+  padding-left: 1ch;
+}
+#chatlog > .lines > .line > .nick s {
+  float: left;
+  opacity: 0.7;
+  text-decoration: none;
+  margin-left: -1ch;
+  padding-left: 1ch;
+}
+#chatlog > .lines > .line::before {
+  content: attr(data-timestamp);
+  display: inline-block;
+  width: 5ch;
+  float: right;
+  margin-left: 2ch;
+  color: #707070;
+  -webkit-user-select: none;
+}
 @-webkit-keyframes channel-mentioned {
-  0% {
-    color: #f2bfbf;
+  from {
+    color: #f4a7a7;
   }
-  100% {
-    color: #f77878;
+  to {
+    color: #f96060;
   }
 }

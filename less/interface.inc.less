@@ -1,0 +1,26 @@
+.button(@color: @color-button,
+        @hover: lighten(@color, 10%),
+        @active: @color-button-active)
+{
+    transition: background linear 0.06s, color linear 0.06s;
+    background: @color;
+    cursor: pointer;
+
+    &:hover
+    {
+        background: @hover;
+        color: contrast(@hover, @color-text-dark, @color-text-light);
+    }
+
+    &:active
+    {
+        background: @active;
+        color: contrast(@active, @color-text-dark, @color-text-light) !important;
+    }
+}
+
+.mono-font
+{
+    font-family: @fonts-mono;
+    font-size: 0.9em;
+}

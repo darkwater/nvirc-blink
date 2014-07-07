@@ -176,7 +176,7 @@ $('#application-menu > li').click(function (e)
     }
 });
 
-$('main, #application-menu > li > menu li:not(.separator)').click(function (e)
+$('#application, #application-menu > li > menu li:not(.separator)').click(function (e)
 {
     $('#application-menu > li.active').removeClass('active');
 }); // }}}
