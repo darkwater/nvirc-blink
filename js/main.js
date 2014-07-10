@@ -97,7 +97,7 @@ nvirc.connect = function () // {{{
         this.once('data', function (data)
         {
             var res;
-            if (!(res = data.match(/^(nvircd[a-z0-9-]*) ([0-9.a-z]+)$/)))
+            if (!(res = data.match(/^(nvircd[a-z0-9-]*) [0-9a-z](\.[0-9a-z])*$/)))
             {
                 console.log(res);
                 conn.end();
