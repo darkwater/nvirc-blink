@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html class="borderless">
+<html>
 <head>
     <title>nvirc</title>
     <link type="text/css" rel="stylesheet" href="css/main.css" />
 </head>
 <body>
+
+    <!-- Templates -->
+
+    <!-- t-nicklist-nick:
+     !   A chat message, used in #chatlog .lines
+     !-->
+
+    <template id="t-nicklist-nick">
+        <div class="line" data-timestamp="%TIMESTAMP%">
+            <span class="nick"><s>%OP%</s>%NICK%</span>
+            %MESSAGE%
+        </div>
+    </template>
+
+    <!-- End of templates section -->
+
     <menu type="toolbar" id="application-menu">
         <li>
             <i class="fa fa-comments-o"></i>
@@ -48,64 +64,11 @@
 
         <main>
             <header>
-                <div>@Darkwater [+i] on Freenode/#novaember [+nt]</div>
-                <div>unek voted worst admin of the year all years</div>
+                <div id="header-line1">@Darkwater [+i] on Freenode/#novaember [+nt]</div>
+                <div id="header-line2">unek voted worst admin of the year all years</div>
             </header>
             <section id="chatlog">
-                <div class="lines">
-                    <div class="line" data-timestamp="12:34">
-                        <span class="nick"><s>@</s>Darkwater</span>
-                        Hello, world!
-                    </div>
-                    <div class="line" data-timestamp="12:34">
-                        <span class="nick"><s>+</s>Ratchet302</span>
-                        world says shut up
-                    </div>
-                    <div class="line" data-timestamp="12:35">
-                        <span class="nick"><s>&amp;</s>Mro95</span>
-                        inderdeed
-                    </div>
-                    <div class="line" data-timestamp="12:35">
-                        <span class="nick"><s>@</s>Darkwater</span>
-                        wow rude
-                    </div>
-                    <div class="line" data-timestamp="12:35">
-                        <span class="nick">faget</span>
-                        hi love &lt;3
-                    </div>
-                    <div class="line" data-timestamp="12:35">
-                        <span class="nick"><s>@</s>Darkwater</span>
-                        shut up faget
-                    </div>
-                    <div class="line" data-timestamp="12:36">
-                        <span class="nick"><s>&amp;</s>Mro95</span>
-                        shut up faget
-                    </div>
-                    <div class="line" data-timestamp="12:38">
-                        <span class="nick"><s>+</s>Ratchet302</span>
-                        shut up faget
-                    </div>
-                    <div class="line" data-timestamp="12:39">
-                        <span class="nick">Nixola</span>
-                        shut up faget
-                    </div>
-                    <div class="line" data-timestamp="12:40">
-                        <span class="nick">faget</span>
-                        :(
-                    </div>
-                    <div class="line" data-timestamp="12:40">
-                        <span class="nick"><s>@</s>Darkwater</span>
-                        shut up faget
-                    </div>
-                    <div class="line" data-timestamp="12:44">
-                        <span class="nick"><s>+</s>Ratchet302</span>
-                        !potato
-                    </div>
-                    <div class="line" data-timestamp="12:44">
-                        <span class="nick">Botty</span>
-                        <div>Ratchet302: you have 0 potato points</div>
-                    </div>
-                </div>
+                <div class="lines"></div>
             </section>
             <footer>
                 <span class="own-nick"><s>@</s>Darkwater</span>
@@ -143,8 +106,6 @@
                     break;
             }
         }
-
-        for (var i = 0; i < 3; i++) $("#chatlog .lines").append($("#chatlog .lines > *").clone());
     </script>
 </body>
 </html>
